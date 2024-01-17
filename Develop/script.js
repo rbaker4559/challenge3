@@ -29,12 +29,55 @@ function writePassword() {
 
 //generates password
 function generatePassword() {
-  //
-  var characterCount = prompt ("Length of password (min 8 characters; max 128 characters");
-  var inclLower = prompt ("Contain lowercase characters? (Y/N)");
+  var characterCount = getCharacterCount();
+  var inclLower = inclLower();
+  var inclUpper = inclUpper();
+  var inclNumeric = inclNumeric();
+  var inclSpecial = inclSpecial();
+
+
+  /*
+  Function
+  Assigns character count
+  Re-Inits if parameters not met
+  */
+  function getCharacterCount() {
+    characterCount = prompt ("Length of password (min 8 characters; max 128 characters");
+    if (isNaN(characterCount) === true) {
+      alert ("Please try again. Input must be a NUMBER.");
+      getCharacterCount();
+    } else if (characterCount < 8) {
+      alert ("Number cannot be LESS THAN 8. Please select a value between 8 and 128 characters.");
+      getCharacterCount();
+    } else if (characterCount > 128) {
+      alert ("Number cannot be GREATER THAN 128. Please select a vaue between 8 and 128 characters.");
+      getCharacterCount();
+    } else {
+      return;
+    }
+  }
+
+  /*
+  Function
+  Assigns input as y or n
+  Re-Inits if parameters not met
+  */
+  function inclLower() {
+    inclLower = prompt ("Contain lowercase characters? (Y/N)");
+    if (inclLower == "y") {
+      return;
+    } else if (inclLower == "n") {
+      return;
+    } else {
+      alert ("Try again. Please select EITHER y or n. No other characters allowed.");
+      inclLower();
+    }
+  }
+  /*
   var inclUpper = prompt ("Contain uppercase characters? (Y/N)");
   var inclNumeric = prompt ("Contain numeric characters? (Y/N)");
   var inclSpecial = prompt ("Contain special characters? (Y/N)");
+  */
 };
 
 generatePassword();
