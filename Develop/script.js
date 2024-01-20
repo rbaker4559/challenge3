@@ -27,60 +27,46 @@ function writePassword() {
   passwordText.value = password;
 };
 
-//generates password
 function generatePassword() {
-  var characterCount = getCharacterCount();
-  var inclLower = inclLower();
-  var inclUpper = inclUpper();
-  var inclNumeric = inclNumeric();
-  var inclSpecial = inclSpecial();
 
+  //number of charactors selector and validation
+  var numCharacter = prompt("Number of characters (between 8 and 128)?");
 
-  /*
-  Function
-  Assigns character count
-  Re-Inits if parameters not met
-  */
-  function getCharacterCount() {
-    characterCount = prompt ("Length of password (min 8 characters; max 128 characters");
-    if (isNaN(characterCount) === true) {
-      alert ("Please try again. Input must be a NUMBER.");
-      getCharacterCount();
-    } else if (characterCount < 8) {
-      alert ("Number cannot be LESS THAN 8. Please select a value between 8 and 128 characters.");
-      getCharacterCount();
-    } else if (characterCount > 128) {
-      alert ("Number cannot be GREATER THAN 128. Please select a vaue between 8 and 128 characters.");
-      getCharacterCount();
-    } else {
-      return;
-    }
+  while (isNaN(numCharacter) || numCharacter > 128 || numCharacter < 8) {
+    alert("Please try again. Must choose a number between 8 and 128");
+    numCharacter = prompt("Number of characters (between 8 and 128)?");
   }
 
-  /*
-  Function
-  Assigns input as y or n
-  Re-Inits if parameters not met
-  */
-  function inclLower() {
-    inclLower = prompt ("Contain lowercase characters? (Y/N)");
-    if (inclLower == "y") {
-      return;
-    } else if (inclLower == "n") {
-      return;
-    } else {
-      alert ("Try again. Please select EITHER y or n. No other characters allowed.");
-      inclLower();
-    }
-  }
-  /*
-  var inclUpper = prompt ("Contain uppercase characters? (Y/N)");
-  var inclNumeric = prompt ("Contain numeric characters? (Y/N)");
-  var inclSpecial = prompt ("Contain special characters? (Y/N)");
-  */
-};
+  //Lowercase selector and validation
+  var lowerCase = prompt("Include lowercase characters? (y or n)");
 
-generatePassword();
+  while (lowerCase !== "y" && lowerCase !== "n") {
+    alert("Please try again. Please select either 'y' or 'n'");
+    lowerCase = prompt("Include lowercase characters? (y or n)?");
+  }
+
+
+  //lowercase selector and validation
+  var upperCase = prompt("Include uppercase characters? (y or n)");
+
+  while (upperCase !== "y" && upperCase !== "n") {
+    alert("Please try again. Please select either 'y' or 'n'");
+    upperCase = prompt("Include uppercase characters? (y or n)?");
+  }
+
+  //special character selector and validation
+  var specialChar = prompt("Include special characters? (y or n)");
+
+  while (specialChar !== "y" && specialChar !== "n") {
+    alert("Please try again. Please select either 'y' or 'n'");
+    specialChar = prompt("Include special characters? (y or n)?");
+  }
+
+}
+  
+
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
