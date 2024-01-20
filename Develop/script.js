@@ -29,6 +29,8 @@ function writePassword() {
 
 function generatePassword() {
 
+  var result = "";
+
   //number of charactors selector and validation
   var numCharacter = prompt("Number of characters (between 8 and 128)?");
 
@@ -55,14 +57,36 @@ function generatePassword() {
   }
 
   //special character selector and validation
-  var specialChar = prompt("Include special characters? (y or n)");
+  var special = prompt("Include special characters? (y or n)");
 
-  while (specialChar !== "y" && specialChar !== "n") {
+  while (special !== "y" && special !== "n") {
     alert("Please try again. Please select either 'y' or 'n'");
-    specialChar = prompt("Include special characters? (y or n)?");
+    special = prompt("Include special characters? (y or n)?");
   }
 
-}
+  //character variables
+  var lowerCaseChars = "abcdefghijklmnopqrstuvwxyz"
+  var upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var specialChars = "!@#$%^&*()-_=+";
+
+  //create and assign password keybank
+  var passwordKeybank = ""
+
+  if (lowerCase === "y") {
+    passwordKeybank = passwordKeybank + lowerCaseChars;
+  } 
+  
+  if (upperCase === "y"){
+    passwordKeybank = passwordKeybank + upperCaseChars;
+  } 
+  
+  if (special === "y") {
+    passwordKeybank = passwordKeybank + specialChars;
+  }
+
+  console.log(passwordKeybank);
+
+  }
   
 
 
