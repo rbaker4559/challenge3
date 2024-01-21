@@ -88,10 +88,10 @@ function generatePassword() {
 
   //create password from stored parameters
   for (var i = 0; i < numCharacter; i++) {
-    result += passwordKeybank.charAt(Math.floor(Math.random() * numCharacter));
+    result += passwordKeybank.charAt(Math.floor(Math.random() * passwordKeybank.length));
   }
 
-  console.log(result);
+  return result;
   }
   
 
