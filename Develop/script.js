@@ -86,6 +86,12 @@ function generatePassword() {
 
   console.log(passwordKeybank);
 
+  //create password from stored parameters
+  for (var i = 0; i < numCharacter; i++) {
+    result += passwordKeybank.charAt(Math.floor(Math.random() * numCharacter));
+  }
+
+  console.log(result);
   }
   
 
